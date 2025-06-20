@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Course Unlocked on {{ APP_NAME }}!</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { width: 90%; max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        .header { background-color: #f7f7f7; padding: 10px; text-align: center; border-bottom: 1px solid #ddd; }
+        .content { padding: 20px 0; }
+        .footer { font-size: 0.9em; text-align: center; color: #777; margin-top: 20px; }
+        a { color: #007bff; }
+        .course-title { font-size: 1.2em; font-weight: bold; color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>New Course Unlocked!</h2>
+        </div>
+        <div class="content">
+            <p>Hi {{ user_name | default('there') }},</p>
+
+            <p>Great news! Your recent activity (e.g., new subscription or plan upgrade) has unlocked new learning opportunities for you on {{ APP_NAME }}.</p>
+
+            {% if course_title %}
+            <p>You now have access to the course: <span class="course-title">{{ course_title }}</span>.</p>
+            <p>We encourage you to start learning and make the most out of it. You can access the course here:
+               <a href="{{ APP_FRONTEND_URL }}/courses/{{ course_id | default('') }}">Go to Course</a>
+               (Note: Link might need course_id if available in context)
+            </p>
+            {% else %}
+            <p>You now have access to new courses as part of your subscription. Log in to your dashboard to see all available courses.</p>
+            <p><a href="{{ APP_FRONTEND_URL }}/dashboard">Go to Dashboard</a></p>
+            {% endif %}
+
+            <p>If you have any questions or need assistance, please don't hesitate to reach out to our support team.</p>
+            <p>Happy learning!</p>
+            <p>Best regards,<br>The {{ APP_NAME }} Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; {{ current_year | default(now_utc().year) }} {{ APP_NAME }}. All rights reserved.</p>
+            <p><a href="{{ APP_FRONTEND_URL }}">Visit our website</a></p>
+        </div>
+    </div>
+</body>
+</html>

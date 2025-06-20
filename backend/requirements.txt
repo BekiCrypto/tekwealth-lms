@@ -1,0 +1,16 @@
+fastapi>=0.100.0
+uvicorn[standard]>=0.20.0
+python-dotenv>=0.20.0 # For managing environment variables
+psycopg2-binary>=2.9.0 # For PostgreSQL connection
+SQLAlchemy>=2.0.0     # For ORM
+alembic>=1.9.0        # For database migrations
+passlib[bcrypt]>=1.7.4 # For password hashing
+python-jose[cryptography]>=3.3.0 # For JWT tokens
+python-multipart>=0.0.5 # For file uploads (e.g., profile pictures, course materials)
+firebase-admin>=6.0.0 # For Firebase integration
+stripe>=7.0.0 # For Stripe payment integration (choose a recent stable version)
+openai>=1.0.0 # For OpenAI API integration (chose a recent v1.x version)
+emails>=0.6 # For sending emails with Jinja2 templating
+Jinja2>=3.0 # Required by `emails` for templating
+# Add other payment gateway SDKs here if needed, e.g., chapa-py, telebirr-sdk
+# For now, only Stripe SDK is added.

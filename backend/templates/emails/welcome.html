@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to {{ APP_NAME }}!</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { width: 90%; max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        .header { background-color: #f7f7f7; padding: 10px; text-align: center; border-bottom: 1px solid #ddd; }
+        .content { padding: 20px 0; }
+        .footer { font-size: 0.9em; text-align: center; color: #777; margin-top: 20px; }
+        a { color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Welcome to {{ APP_NAME }}!</h2>
+        </div>
+        <div class="content">
+            <p>Hi {{ user_name | default('there') }},</p>
+            <p>Thank you for joining {{ APP_NAME }}! We're excited to have you on board.</p>
+
+            <p>You can start exploring our platform and discover amazing courses to enhance your skills.</p>
+
+            {% if referral_code %}
+            <p>You have a unique referral code: <strong>{{ referral_code }}</strong>. Share it with your friends and earn rewards when they join and subscribe!</p>
+            <p>Your referral link: <a href="{{ APP_FRONTEND_URL }}/register?ref={{ referral_code }}">{{ APP_FRONTEND_URL }}/register?ref={{ referral_code }}</a></p>
+            {% endif %}
+
+            <p>If you have any questions, feel free to contact our support team.</p>
+            <p>Happy learning!</p>
+            <p>Best regards,<br>The {{ APP_NAME }} Team</p>
+        </div>
+        <div class="footer">
+            <p>&copy; {{ current_year | default(now_utc().year) }} {{ APP_NAME }}. All rights reserved.</p>
+            <p><a href="{{ APP_FRONTEND_URL }}">Visit our website</a></p>
+        </div>
+    </div>
+</body>
+</html>
